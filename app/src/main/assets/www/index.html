@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#101e35" />
+    <title>TWiLight Vault</title>
+    <link rel="stylesheet" href="css/twilight.css" />
+  </head>
+  <body>
+    <main id="app-shell" aria-label="TWiLight Vault">
+      <section class="dsi-screen top-screen" aria-label="Game preview">
+        <div class="screen-glass"></div>
+        <header class="status-bar">
+          <span class="brand-mark">TWiLight <b>VAULT</b></span>
+          <div class="status-items">
+            <span id="clock">--:--</span>
+            <span class="status-divider"></span>
+            <span class="battery"><span id="battery-level">--</span>% <i id="battery-icon" aria-hidden="true"></i></span>
+          </div>
+        </header>
+        <div class="top-content">
+          <div class="cover-frame">
+            <div id="cover-placeholder" class="cover-placeholder" aria-hidden="true">
+              <span class="cover-stars">✦</span>
+              <strong>SELECT<br />A GAME</strong>
+              <span class="cover-line"></span>
+              <small>YOUR VAULT AWAITS</small>
+            </div>
+            <img id="game-cover" alt="" hidden />
+          </div>
+          <div class="game-meta">
+            <p class="eyebrow">NOW SELECTED</p>
+            <h1 id="selected-title">Choose a cartridge</h1>
+            <p id="selected-subtitle" class="selected-subtitle">Search your vault below to begin.</p>
+            <div class="meta-row">
+              <span id="selected-system" class="system-pill">READY</span>
+              <span id="selected-size" class="file-size">No game selected</span>
+            </div>
+            <div class="selection-actions">
+              <button id="favorite-game" class="favorite-button" type="button" aria-label="Add selected game to favorites" disabled>☆</button>
+              <button id="start-game" class="start-button" type="button" disabled>
+                <span class="start-icon">▶</span>
+                <span>START GAME</span>
+                <span class="button-arrow">›</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="screen-footer">
+          <span>TWILIGHT VAULT // LOCAL CARTRIDGE INDEX</span>
+          <span id="sync-status">CONNECTING...</span>
+        </div>
+      </section>
+
+      <div class="hinge" aria-hidden="true"><span></span><span></span><span></span></div>
+
+      <section class="dsi-screen bottom-screen" aria-label="Game library">
+        <div class="bottom-inner">
+          <div class="library-heading">
+            <div>
+              <p class="eyebrow">CARTRIDGE LIBRARY</p>
+              <h2>Choose your adventure</h2>
+            </div>
+            <span id="game-count" class="game-count">0 TITLES</span>
+          </div>
+          <label class="search-wrap" for="search-input">
+            <span class="search-icon" aria-hidden="true"></span>
+            <input id="search-input" type="search" autocomplete="off" placeholder="Search your vault..." />
+            <kbd>⌕</kbd>
+          </label>
+          <div class="library-tools">
+            <div id="filter-bar" class="filter-bar" role="group" aria-label="Filter library">
+              <button class="filter-button active" type="button" data-filter="all">ALL</button>
+              <button class="filter-button" type="button" data-filter="favorites">FAVORITES</button>
+              <button class="filter-button" type="button" data-filter="recent">RECENT</button>
+              <button class="filter-button" type="button" data-filter="snes">SNES</button>
+              <button class="filter-button" type="button" data-filter="gba">GBA</button>
+              <button class="filter-button" type="button" data-filter="nds">NDS</button>
+              <button class="filter-button" type="button" data-filter="n64">N64</button>
+            </div>
+            <div class="utility-actions">
+              <button id="surprise-button" class="utility-button" type="button">RANDOM</button>
+              <button id="refresh-library" class="utility-button" type="button" aria-label="Refresh library">↻</button>
+            </div>
+          </div>
+          <div id="library-state" class="library-state" role="status">
+            <span class="loader"></span>
+            <span>Scanning the vault...</span>
+          </div>
+          <div id="game-carousel" class="game-carousel" aria-live="polite"></div>
+        </div>
+        <footer class="bottom-footer">
+          <span><i class="home-dot"></i> VAULT HOME</span>
+          <span>TOUCH TO SELECT <b>·</b> START TO PLAY</span>
+          <span class="version-tag">TV // 01</span>
+        </footer>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="alert" aria-live="assertive"></div>
+
+    <section id="emulator-container" class="emulator-overlay" aria-hidden="true">
+      <div class="emulator-topbar">
+        <span id="emulator-title">TWiLight Vault</span>
+        <button id="exit-game" type="button">EXIT TO MENU <b>×</b></button>
+      </div>
+      <div id="game" class="emulator-stage"></div>
+      <div id="emulator-loading" class="emulator-loading">
+        <span class="loader"></span>
+        <p>Preparing cartridge...</p>
+      </div>
+    </section>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
